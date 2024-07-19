@@ -4,14 +4,21 @@
   "description": "",
   "main": "eslint.config.js",
   "type": "module",
+  "workspaces": [
+    "packages/*",
+    "applications/*"
+  ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "clean": "rm -r dist",
-    "dev": "tsx src/index.ts",
+    "build": "npm run build --workspaces --if-present",
+    "clean": "npm run clean:node_modules && npm run clean --workspaces --if-present",
+    "clean:node_modules": "rm -rf node_modules",
+    "dev": "npm run dev --workspaces",
     "format": "prettier . -c",
     "format:fix": "prettier . -w",
+    "install:root": "npm install --workspaces=false",
     "lint": "eslint . --fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "reset": "npm run clean && npm install && npm run build",
+    "test": "npm run test --workspaces --if-present",
     "prepare": "husky"
   },
   "devDependencies": {
