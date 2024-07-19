@@ -12,7 +12,7 @@
     "build": "npm run build --workspaces --if-present",
     "clean": "npm run clean:node_modules && npm run clean --workspaces --if-present",
     "clean:node_modules": "rm -rf node_modules",
-    "dev": "npm run dev --workspaces",
+    "dev": "npm run dev --workspaces --if-present",
     "format": "prettier . -c",
     "format:fix": "prettier . -w",
     "install:root": "npm install --workspaces=false",
