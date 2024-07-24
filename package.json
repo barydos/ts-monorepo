@@ -11,8 +11,10 @@
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "clean": "npm run clean:node_modules && npm run clean --workspaces --if-present",
+    "clean:dist": "npm run clean:dist --workspaces --if-present",
     "clean:node_modules": "rm -rf node_modules",
     "dev": "npm run dev --workspaces --if-present",
+    "dev:playground": "npm run dev --workspace=playground",
     "format": "prettier . -c",
     "format:fix": "prettier . -w",
     "install:root": "npm install --workspaces=false",
@@ -29,6 +31,7 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "prettier": "3.3.3",
