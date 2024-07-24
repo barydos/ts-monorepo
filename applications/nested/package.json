@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node scripts/build.js",
+    "build": "echo wip",
     "clean": "npm run clean:node_modules && npm run clean:lambdas",
     "clean:lambdas": "find ./lambdas -type d -maxdepth 1 -not -name lambdas -exec sh -c 'npm run --prefix \"$1\" clean' _ {} \\;",
     "clean:node_modules": "rm -rf node_modules",

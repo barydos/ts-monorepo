@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "moduleResolution": "NodeNext",
+
     /* Base Options: */
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -25,5 +29,5 @@
     /* If your code doesn't run in the DOM: */
     "lib": ["es2022"]
   },
-  "exclude": ["**/*.js"]
+  "exclude": ["node_modules", "dist"]
 }

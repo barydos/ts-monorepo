@@ -2,11 +2,15 @@
   "name": "playground",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "private": true,
-  "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/build.js",
     "clean": "npm run clean:dist && npm run clean:node_modules && npm run clean:tsbuildinfo",
     "clean:dist": "rm -rf dist",
     "clean:node_modules": "rm -rf node_modules",
