@@ -6,7 +6,7 @@ export async function handler() {
     console.log(`-- Waiting ${timeout / 1_000} seconds..`);
     await delay(5_000);
 
-    console.log(`-- Complete!`);
+    console.log('-- Complete!');
   } catch (err) {
     console.error('Unexpected error encountered!');
     console.error(err);

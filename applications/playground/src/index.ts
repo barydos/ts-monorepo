@@ -1,3 +1,3 @@
-import { handler } from './app/app.js';
+import { handler } from './app/app';
 
 handler();

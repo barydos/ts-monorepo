@@ -1,6 +1,5 @@
-// @ts-check
-
 import eslint from '@eslint/js';
+import stylisticJs from '@stylistic/eslint-plugin-js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
@@ -25,6 +24,14 @@ export default tseslint.config(
     rules: {
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
+    },
+  },
+  {
+    plugins: {
+      '@stylistic/js': stylisticJs,
+    },
+    rules: {
+      '@stylistic/js/quotes': ['error', 'single'],
     },
   },
   eslint.configs.recommended,
