@@ -2,7 +2,7 @@
   "compilerOptions": {
     "declaration": true,
     "emitDeclarationOnly": true,
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Node",
 
     /* Base Options: */
     "esModuleInterop": true,
@@ -18,8 +18,7 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
 
-    /* If transpiling with TypeScript: */
-    "module": "NodeNext",
+    "module": "ESNext",
     "sourceMap": true,
 
     /* AND if you're building for a library in a monorepo: */

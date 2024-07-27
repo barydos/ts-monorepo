@@ -1,11 +1,18 @@
-import eslint from '@eslint/js';
-import stylisticJs from '@stylistic/eslint-plugin-js';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
+/* eslint @typescript-eslint/no-var-requires: 0 */
 
-export default tseslint.config(
+const globals = require('globals');
+const eslint = require('@eslint/js');
+const stylisticJs = require('@stylistic/eslint-plugin-js');
+const simpleImportSort = require('eslint-plugin-simple-import-sort');
+const tseslint = require('typescript-eslint');
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+
+module.exports = tseslint.config(
+  eslintPluginPrettierRecommended,
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.strict,
+  ...tseslint.configs.stylistic,
   {
     ignores: ['**/dist'],
   },
@@ -34,9 +41,4 @@ export default tseslint.config(
       '@stylistic/js/quotes': ['error', 'single'],
     },
   },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.strict,
-  ...tseslint.configs.stylistic,
-  eslintPluginPrettierRecommended,
 );
