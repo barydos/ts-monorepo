@@ -2,15 +2,13 @@
   "compilerOptions": {
     "declaration": true,
     "emitDeclarationOnly": true,
-    "moduleResolution": "Node",
 
     /* Base Options: */
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "target": "es2022",
+    "target": "ES2015",
     "allowJs": true,
     "resolveJsonModule": true,
-    "moduleDetection": "force",
     "isolatedModules": true,
 
     /* Strictness */
@@ -18,15 +16,12 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
 
-    "module": "ESNext",
+    "module": "NodeNext",
     "sourceMap": true,
 
     /* AND if you're building for a library in a monorepo: */
     "composite": true,
-    "declarationMap": true,
-
-    /* If your code doesn't run in the DOM: */
-    "lib": ["es2022"]
+    "declarationMap": true
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "coverage"]
 }

@@ -11,12 +11,16 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json && node scripts/build.js",
-    "clean": "npm run clean:dist && npm run clean:node_modules && npm run clean:tsbuildinfo",
+    "clean": "npm run clean:coverage && npm run clean:dist && npm run clean:node_modules && npm run clean:tsbuildinfo",
+    "clean:coverage": "rm -rf coverage",
     "clean:dist": "rm -rf dist",
     "clean:node_modules": "rm -rf node_modules",
     "clean:tsbuildinfo": "rm -f tsconfig.tsbuildinfo",
     "dev": "tsx src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:silent": "npm run test -- --silent",
+    "test:unit": "./scripts/unit-test.sh",
+    "test:unit:silent": "npm run test:unit --silent"
   },
   "keywords": [],
   "author": "",
