@@ -14,7 +14,7 @@
     "clean:dist": "rm -rf dist",
     "clean:node_modules": "rm -rf node_modules",
     "clean:tsbuildinfo": "rm -f tsconfig.tsbuildinfo",
-    "test": "jest",
+    "test": "jest --logHeapUsage",
     "test:silent": "npm run test -- --silent",
     "test:unit": "./scripts/unit-test.sh",
     "test:unit:silent": "npm run test:unit --silent"
