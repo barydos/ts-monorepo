@@ -9,7 +9,7 @@ const config: Config = {
     '<rootDir>/src/**/__tests__/**/*.+(ts|tsx|js)',
     '<rootDir>/src/**/?(*.)+(spec|test).+(ts|tsx|js)',
   ],
-  coveragePathIgnorePatterns: ['src/index.ts'],
+  coveragePathIgnorePatterns: ['index.ts'],
 };
 
 export default config;
