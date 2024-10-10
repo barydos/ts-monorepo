@@ -30,6 +30,7 @@
     "format:fix": "prettier . -w",
     "install:root": "npm install --workspaces=false",
     "lint": "eslint . --fix",
+    "lint:check": "eslint .",
     "reset": "npm run clean && npm install && npm run build",
     "test": "npm run test:silent --workspaces --if-present",
     "prepare": "husky"
@@ -59,5 +60,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "eslint-plugin-unused-imports": "^4.1.4"
+  }
 }
