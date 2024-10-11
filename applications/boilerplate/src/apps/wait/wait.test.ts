@@ -1,8 +1,8 @@
-import { delay } from 'shared-package';
+import { delay } from '@barydos/shared-libs';
 
 import { wait } from './wait';
 
-jest.mock('shared-package');
+jest.mock('@barydos/shared-libs');
 
 describe('wait', () => {
   beforeAll(() => {

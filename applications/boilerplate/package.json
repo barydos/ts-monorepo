@@ -1,5 +1,5 @@
 {
-  "name": "playground",
+  "name": "@barydos/boilerplate",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -26,6 +26,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "shared-package": "^1.0.0"
+    "@barydos/shared-libs": "^1.0.0"
   }
 }

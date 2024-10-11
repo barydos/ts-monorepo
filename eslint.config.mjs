@@ -1,14 +1,12 @@
-/* eslint @typescript-eslint/no-var-requires: 0 */
+import eslint from '@eslint/js';
+import stylisticJs from '@stylistic/eslint-plugin-js';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import unusedImports from 'eslint-plugin-unused-imports';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
-const globals = require('globals');
-const eslint = require('@eslint/js');
-const stylisticJs = require('@stylistic/eslint-plugin-js');
-const simpleImportSort = require('eslint-plugin-simple-import-sort');
-const tseslint = require('typescript-eslint');
-const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
-const unusedImports = require('eslint-plugin-unused-imports');
-
-module.exports = tseslint.config(
+export default tseslint.config(
   eslintPluginPrettierRecommended,
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
@@ -40,6 +38,10 @@ module.exports = tseslint.config(
     },
     rules: {
       '@stylistic/js/quotes': ['error', 'single'],
+      '@stylistic/js/padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: 'import', next: 'export' }, // At least 1 blank line after imports
+      ],
     },
   },
   {
@@ -57,6 +59,11 @@ module.exports = tseslint.config(
           argsIgnorePattern: '^_',
         },
       ],
+    },
+  },
+  {
+    rules: {
+      '@typescript-eslint/no-var-requires': 'off',
     },
   },
 );

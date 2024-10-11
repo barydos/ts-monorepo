@@ -1,5 +1,5 @@
 {
-  "name": "shared-package",
+  "name": "@barydos/shared-libs",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.cjs.js",
