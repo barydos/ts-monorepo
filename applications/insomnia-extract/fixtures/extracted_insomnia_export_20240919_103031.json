@@ -1,0 +1,43 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-09-18T01:19:20.728Z",
+  "__export_source": "insomnia.desktop.app:v2021.5.0",
+  "resources": [
+    {
+      "_id": "wrk_scratchpad",
+      "parentId": "proj_scratchpad",
+      "modified": 1726446026526,
+      "created": 1726446026526,
+      "name": "Scratch Pad",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_646273043bba4a3ea7e181cb01f93682",
+      "parentId": "env_99d30891da4bdcebc63947a8fc17f076de878684",
+      "modified": 1726618523918,
+      "created": 1726446115009,
+      "name": "mapi_feat",
+      "data": {
+        "API_URL": "localhost:3000",
+        "API_KEY": "",
+        "API_KEY_INVALID": "",
+        "ITEM_ID": "1234"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "API_URL",
+          "API_KEY",
+          "API_KEY_INVALID",
+          "ITEM_ID"
+        ]
+      },
+      "color": "#ff0000",
+      "isPrivate": false,
+      "metaSortKey": 1726446115009,
+      "_type": "environment"
+    }
+  ]
+}
