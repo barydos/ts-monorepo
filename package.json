@@ -1,5 +1,5 @@
 {
-  "name": "js-scratch",
+  "name": "@barydos/ts-monorepo",
   "version": "1.0.0",
   "description": "",
   "workspaces": [
