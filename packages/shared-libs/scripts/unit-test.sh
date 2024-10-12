@@ -18,4 +18,4 @@ TEST_FILE=${TEST_FILE_ABSOLUTE#$TRIM}
 COVERAGE_FILE="${TEST_FILE%.test.ts}.ts"
 
 # Run Jest with the specified test file and collect coverage for the source file
-npx jest --coverage "$TEST_FILE" --collectCoverageFrom="$SOURCE_FILES"
+npm run test -- --coverage "$TEST_FILE" --collectCoverageFrom="$COVERAGE_FILE"
