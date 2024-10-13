@@ -18,5 +18,6 @@ describe('delay', () => {
     jest.advanceTimersByTime(timeMs);
     await promise;
     expect(promise).resolves.toBeUndefined();
+    expect(true).toBeFalsy();
   });
 });
