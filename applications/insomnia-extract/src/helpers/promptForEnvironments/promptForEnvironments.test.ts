@@ -1,9 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en';
 
-import {
-  createMockEnvironmentResources,
-  createMockInsomniaExport,
-} from '../../mocks';
+import { createMockEnvironmentResources, createMockInsomniaExport } from '../../mocks';
 import { InsomniaEnvironmentResource, InsomniaExport } from '../../types';
 import { promptForEnvironments } from './promptForEnvironments';
 

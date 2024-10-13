@@ -1,7 +1,4 @@
-import {
-  createMockInsomniaExport,
-  createMockInsomniaResource,
-} from '../../mocks';
+import { createMockInsomniaExport, createMockInsomniaResource } from '../../mocks';
 import { InsomniaResourceType } from '../../types/insomnia.types';
 import { getWorkspace } from './getWorkspace';
 

@@ -20,9 +20,7 @@ export const createMockInsomniaResource = (
   };
 };
 
-export const createMockBaseEnvironment = (
-  partial: Partial<InsomniaResource> = {},
-) => {
+export const createMockBaseEnvironment = (partial: Partial<InsomniaResource> = {}) => {
   return {
     ...createMockInsomniaResource({
       _type: InsomniaResourceType.environment,
@@ -69,9 +67,7 @@ export const createMockInsomniaExport = (
     _type: InsomniaResourceType.workspace,
   });
 
-  const typesExclWorkspace = Object.values(
-    InsomniaResourceType,
-  ) as InsomniaResourceType[];
+  const typesExclWorkspace = Object.values(InsomniaResourceType) as InsomniaResourceType[];
   const resources = createArray(faker.number.int({ min: 1, max: 5 }), () => {
     const type = faker.helpers.arrayElement(typesExclWorkspace);
     return createMockInsomniaResource({ _type: type });

@@ -1,7 +1,4 @@
-import {
-  InsomniaExport,
-  InsomniaResourceType,
-} from '../../types/insomnia.types';
+import { InsomniaExport, InsomniaResourceType } from '../../types/insomnia.types';
 
 /**
  * Returns the workspace resource in the Insomnia export.

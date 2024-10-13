@@ -29,14 +29,8 @@ export const app = async () => {
     throw new Error('Missing workspace resource');
   }
 
-  const requestedCollections = await promptForCollections(
-    insomniaExport,
-    workspaceResource._id,
-  );
+  const requestedCollections = await promptForCollections(insomniaExport, workspaceResource._id);
   console.log(requestedCollections);
-  const requestedEnvironments = await promptForEnvironments(
-    insomniaExport,
-    workspaceResource._id,
-  );
+  const requestedEnvironments = await promptForEnvironments(insomniaExport, workspaceResource._id);
   console.log(requestedEnvironments);
 };

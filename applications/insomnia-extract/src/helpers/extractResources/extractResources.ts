@@ -13,17 +13,13 @@ export const extractResources = (
   const resources: InsomniaResource[] = [];
 
   for (const name of resourceNames) {
-    const resourceToTraverse = insomniaResources.find(
-      (resource) => resource.name === name,
-    );
+    const resourceToTraverse = insomniaResources.find((resource) => resource.name === name);
     if (!resourceToTraverse) {
       throw new Error(`couldnt find root resource to traverse: "${name}"`);
     }
 
     resources.push(resourceToTraverse);
-    resources.push(
-      ...getSubResources(insomniaResources, resourceToTraverse._id),
-    );
+    resources.push(...getSubResources(insomniaResources, resourceToTraverse._id));
   }
 
   return resources;

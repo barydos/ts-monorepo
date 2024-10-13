@@ -9,9 +9,7 @@ export const getSubResources = (
 ): InsomniaResource[] => {
   const resources: InsomniaResource[] = [];
 
-  const childResources = insomniaResources.filter(
-    (resource) => resource.parentId === parentId,
-  );
+  const childResources = insomniaResources.filter((resource) => resource.parentId === parentId);
 
   for (const resource of childResources) {
     const id = resource._id;

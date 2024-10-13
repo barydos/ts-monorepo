@@ -15,10 +15,7 @@ export const promptForEnvironments = async (
   workspaceId: string,
 ): Promise<InsomniaEnvironmentResource[]> => {
   const baseEnvironmentResource = insomniaExport.resources.find((resource) => {
-    return (
-      resource._type === InsomniaResourceType.environment &&
-      resource.parentId === workspaceId
-    );
+    return resource._type === InsomniaResourceType.environment && resource.parentId === workspaceId;
   }) as InsomniaEnvironmentResource | undefined;
 
   if (!baseEnvironmentResource) {

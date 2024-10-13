@@ -1,23 +1,16 @@
 import { checkbox, confirm } from '@inquirer/prompts';
 
-import {
-  InsomniaExport,
-  InsomniaResourceType,
-} from '../../types/insomnia.types';
+import { InsomniaExport, InsomniaResourceType } from '../../types/insomnia.types';
 import { extractResources } from '../extractResources/extractResources';
 
 /**
  * Prompt user to extract the desired collections and environments from the workspace.
  * @param insomniaExport The export file from Insomnia.
  */
-export const promptForCollections = async (
-  insomniaExport: InsomniaExport,
-  workspaceId: string,
-) => {
+export const promptForCollections = async (insomniaExport: InsomniaExport, workspaceId: string) => {
   const collectionResources = insomniaExport.resources.filter((resource) => {
     return (
-      resource._type === InsomniaResourceType.request_group &&
-      resource.parentId === workspaceId
+      resource._type === InsomniaResourceType.request_group && resource.parentId === workspaceId
     );
   });
 
