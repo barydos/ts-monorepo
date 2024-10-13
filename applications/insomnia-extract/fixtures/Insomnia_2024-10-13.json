@@ -1,0 +1,216 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-10-13T04:24:07.695Z",
+  "__export_source": "insomnia.desktop.app:v10.0.0",
+  "resources": [
+    {
+      "_id": "req_126d7fc4fa094fe28acd4e9499ff22a3",
+      "parentId": "fld_cf5c586ad7994dd6a85fc4a32d034722",
+      "modified": 1728793414405,
+      "created": 1728793397544,
+      "url": "{{ _.API_URL }}/items",
+      "name": "items",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "User-Agent",
+          "value": "insomnia/10.0.0"
+        }
+      ],
+      "authentication": {
+        "type": "apikey",
+        "disabled": false,
+        "key": "x-api-key",
+        "value": "{{ _.API_KEY }}",
+        "addTo": "header"
+      },
+      "metaSortKey": -1728793400769,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_cf5c586ad7994dd6a85fc4a32d034722",
+      "parentId": "fld_18fb0a10807a40d58c22837208b35f45",
+      "modified": 1728793265100,
+      "created": 1728793265100,
+      "name": "items",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1728793265100,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_18fb0a10807a40d58c22837208b35f45",
+      "parentId": "wrk_scratchpad",
+      "modified": 1728793253722,
+      "created": 1728793247760,
+      "name": "mock_api",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1728793247760,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_scratchpad",
+      "parentId": null,
+      "modified": 1728704330159,
+      "created": 1728704330159,
+      "name": "Scratch Pad",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_60e1bbc4467b4916bceb993851e690fa",
+      "parentId": "fld_cf5c586ad7994dd6a85fc4a32d034722",
+      "modified": 1728793422355,
+      "created": 1728793409832,
+      "url": "{{ _.API_URL }}/items/:itemId",
+      "name": "items/:itemId",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "User-Agent",
+          "value": "insomnia/10.0.0"
+        }
+      ],
+      "authentication": {
+        "type": "apikey",
+        "disabled": false,
+        "key": "x-api-key",
+        "value": "{{ _.API_KEY }}",
+        "addTo": "header"
+      },
+      "metaSortKey": -1728793328896.5,
+      "isPrivate": false,
+      "pathParameters": [
+        {
+          "name": "itemId",
+          "value": "123"
+        }
+      ],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a1d5b8cb61884737afbcac1549e29755",
+      "parentId": "fld_18fb0a10807a40d58c22837208b35f45",
+      "modified": 1728793387796,
+      "created": 1728793257024,
+      "url": "{{ _.API_URL }}/health",
+      "name": "health",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "User-Agent",
+          "value": "insomnia/10.0.0"
+        }
+      ],
+      "authentication": {
+        "type": "apikey",
+        "disabled": false,
+        "key": "x-api-key",
+        "value": "{{ _.API_KEY }}",
+        "addTo": "header"
+      },
+      "metaSortKey": -1728793257024,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_99d30891da4bdcebc63947a8fc17f076de878684",
+      "parentId": "wrk_scratchpad",
+      "modified": 1728704337433,
+      "created": 1728704337433,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1728704337433,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_99d30891da4bdcebc63947a8fc17f076de878684",
+      "parentId": "wrk_scratchpad",
+      "modified": 1728704337490,
+      "created": 1728704337490,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "env_d81302a910f04e8992d69ffee61d6be0",
+      "parentId": "env_99d30891da4bdcebc63947a8fc17f076de878684",
+      "modified": 1728793214690,
+      "created": 1728793137744,
+      "name": "mock_feat",
+      "data": {
+        "API_URL": "mock-url/api/v1",
+        "API_KEY": "abc123_feat"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "API_URL",
+          "API_KEY"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1728793137744,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_5b5910771ec14418bfc19e950b9fb53b",
+      "parentId": "env_99d30891da4bdcebc63947a8fc17f076de878684",
+      "modified": 1728793220717,
+      "created": 1728793188634,
+      "name": "mock_dev",
+      "data": {
+        "API_URL": "mock-url/api/v2",
+        "API_KEY": "abc123_dev"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "API_URL",
+          "API_KEY"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1728793137794,
+      "_type": "environment"
+    }
+  ]
+}
