@@ -13,8 +13,7 @@ export const getSubResources = (
 
   for (const resource of childResources) {
     const id = resource._id;
-    resources.push(...getSubResources(insomniaResources, id));
-    return resources;
+    resources.push(resource, ...getSubResources(insomniaResources, id));
   }
 
   return resources;
