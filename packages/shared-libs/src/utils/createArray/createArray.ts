@@ -1,13 +1,21 @@
 /**
  * Creates an array of specified size.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function createArray(size: number, mapper?: (index: number) => any) {
-  const newArray = [...Array(size).keys()];
 
-  if (!mapper) {
-    return newArray;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function createArray<T extends any[], U>(
+  size: number,
+  callback?: (...args: T) => U,
+  ...args: T
+) {
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+
+  // const newArray = [...Array(size).keys()];
+  const newArray = Array.from({ length: size }, (_, index) => index);
+
+  if (!callback) {
+    return newArray as unknown as U[]; // Handle callback case
   }
 
-  return newArray.map(mapper);
+  return newArray.map(() => callback(...args));
 }

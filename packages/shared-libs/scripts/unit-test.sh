@@ -12,7 +12,7 @@ APPLICATION_PATH=$(realpath "$(dirname "$0")/..")
 TRIM=$APPLICATION_PATH
 
 # Relative file path - path/to/file.test.ts
-TEST_FILE=${TEST_FILE_ABSOLUTE#$TRIM}
+TEST_FILE=${TEST_FILE_ABSOLUTE#$TRIM/}
 
 # Extract the main file to test coverage for - path/to/file.ts
 COVERAGE_FILE="${TEST_FILE%.test.ts}.ts"

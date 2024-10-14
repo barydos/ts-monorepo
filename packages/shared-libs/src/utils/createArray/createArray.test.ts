@@ -16,6 +16,16 @@ describe('createArray', () => {
   it('should create an array of specified size with a mapper function', () => {
     const callback = jest.fn();
     expect(createArray(size, callback).length).toBe(size);
-    expect(callback).toHaveBeenCalled();
+    expect(callback).toHaveBeenCalledTimes(size);
+  });
+
+  it('should create an array of specified size with a mapper function with args', () => {
+    const callback = jest.fn();
+    const args = [1, 2];
+    expect(createArray(size, callback, ...args).length).toBe(size);
+    expect(callback).toHaveBeenCalledTimes(size);
+    for (let i = 1; i <= size; i++) {
+      expect(callback).toHaveBeenNthCalledWith(i, ...args);
+    }
   });
 });
