@@ -1,3 +1,4 @@
+import { ERRORS } from '../../constants';
 import { InsomniaResource } from '../../types/insomnia.types';
 import { getSubResources } from '../getSubResources/getSubResources';
 
@@ -12,10 +13,14 @@ export const extractResources = (
 ): InsomniaResource[] => {
   const resources: InsomniaResource[] = [];
 
+  if (!insomniaResources.length) {
+    return resources;
+  }
+
   for (const name of resourceNames) {
     const resourceToTraverse = insomniaResources.find((resource) => resource.name === name);
     if (!resourceToTraverse) {
-      throw new Error(`couldnt find root resource to traverse: "${name}"`);
+      throw new Error(`${ERRORS.EXTRACT_RESOURCE_ERROR}: "${name}"`);
     }
 
     resources.push(resourceToTraverse);

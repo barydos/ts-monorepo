@@ -23,7 +23,7 @@ describe('promptForEnvironments', () => {
     insomniaExport.resources.push(...environmentResources);
   });
 
-  it('should ', () => {
+  it('should return the environments along with the base environment', () => {
     promptForEnvironments(insomniaExport, workspaceId);
   });
 });
