@@ -15,11 +15,13 @@ describe('getWorkspace', () => {
   });
 
   it('should return undefined if workspace resource does not exist', () => {
-    const result = getWorkspace(insomniaExport);
+    const insomniaExportMissingWorkspace = structuredClone(insomniaExport);
+    insomniaExportMissingWorkspace.resources = [otherResource];
+
+    const result = getWorkspace(insomniaExportMissingWorkspace);
     expect(result).toBeUndefined();
   });
 
-  // TODO:
   it('should return the workspace resource if it exists', () => {
     const result = getWorkspace(insomniaExport);
     expect(result).toStrictEqual(workspaceResource);
