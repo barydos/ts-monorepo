@@ -26,6 +26,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@barydos/shared-libs": "^1.0.0"
+    "@barydos/shared-libs": "^1.0.0",
+    "@inquirer/prompts": "^7.0.0"
   }
 }
