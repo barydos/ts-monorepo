@@ -20,9 +20,11 @@ export const createMockInsomniaResource = (
   };
 };
 
-export const createMockBaseEnvironment = (partial: Partial<InsomniaResource> = {}) => {
+export const createMockBaseEnvironment = (
+  partial: Partial<InsomniaEnvironmentResource> = {},
+): InsomniaEnvironmentResource => {
   return {
-    ...createMockInsomniaResource({
+    ...createMockEnvironment({
       _type: InsomniaResourceType.environment,
       name: 'Base Environment',
     }),
@@ -51,12 +53,13 @@ export const createMockEnvironmentResources = (
   workspaceId = workspaceId ?? faker.string.uuid();
 
   const baseEnvironment = createMockBaseEnvironment({ parentId: workspaceId });
-  return [
-    ...createArray(faker.number.int({ min: 1, max: 5 }), () =>
-      createMockEnvironment({ parentId: baseEnvironment._id }),
-    ),
-    baseEnvironment,
-  ];
+  return [baseEnvironment];
+  // return [
+  //   ...createArray(faker.number.int({ min: 1, max: 5 }), createMockEnvironment, {
+  //     parentId: baseEnvironment._id,
+  //   }),
+  //   baseEnvironment,
+  // ];
 };
 export const createMockInsomniaExport = (
   workspaceId?: string,
