@@ -30,7 +30,7 @@ export const promptForEnvironments = async (
     );
   }) as InsomniaEnvironmentResource[];
 
-  const resourceChoices = subEnvironments.map((resource) => {
+  const resourceChoices = [baseEnvironmentResource, ...subEnvironments].map((resource) => {
     const { name } = resource;
     return {
       name: name,
@@ -45,8 +45,9 @@ export const promptForEnvironments = async (
   });
 
   const requestedSubEnvironments = subEnvironments.filter((resource) =>
-    requestedResources.includes(resource.name),
+    requestedResources.includes(sanitiseCheckboxOption(resource.name)),
   );
 
-  return [baseEnvironmentResource, ...requestedSubEnvironments];
+  // return [baseEnvironmentResource, ...requestedSubEnvironments];
+  return requestedSubEnvironments;
 };

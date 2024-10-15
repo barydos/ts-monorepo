@@ -1,6 +1,7 @@
 import { checkbox } from '@inquirer/prompts';
 
 import { InsomniaEnvironmentResource } from '../../types/insomnia.types';
+import { sanitiseCheckboxOption } from '../sanitiseCheckboxOption/sanitiseCheckboxOption';
 
 /**
  * Returns the environment resources with values optionally removed.
@@ -17,7 +18,7 @@ export const removeSecretValues = async (
     const { name } = resource;
     return {
       name: name,
-      value: name,
+      value: sanitiseCheckboxOption(name),
     };
   });
 
@@ -31,12 +32,20 @@ export const removeSecretValues = async (
   }
 
   const environmentResourcesToUpdate = insomniaResources.filter((resource) =>
-    environmentsToUpdate.includes(resource.name),
+    environmentsToUpdate.includes(sanitiseCheckboxOption(resource.name)),
   );
+
   for (const environment of environmentResourcesToUpdate) {
     const { name, data } = environment;
 
     const environmentVariables = Object.keys(data);
+
+    if (!environmentVariables.length) {
+      console.log(`There are on variables in the environment: "${name}"`);
+      console.log('');
+      continue;
+    }
+
     const environmentVariableChoices = environmentVariables.map((key) => {
       return {
         name: key,

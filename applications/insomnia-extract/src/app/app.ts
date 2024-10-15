@@ -1,10 +1,14 @@
+import { input } from '@inquirer/prompts';
+import fs from 'fs';
 import path from 'path';
 
 import { getWorkspace } from '../helpers';
 import { promptForCollections } from '../helpers/promptForCollections/promptForCollections';
 import { promptForEnvironments } from '../helpers/promptForEnvironments/promptForEnvironments';
+import { removeSecretValues } from '../helpers/removeSecretValues/removeSecretValues';
+import { replaceVariablePlaceholders } from '../helpers/replaceVariablePlaceholders/replaceVariablePlaceholders';
 import { InsomniaExport } from '../types';
-import { readExport } from '../utils';
+import { formatDate, readExport } from '../utils';
 
 /**
  * The program to extract the desired subset of the exported Insomnia resources.
@@ -30,7 +34,56 @@ export const app = async () => {
   }
 
   const requestedCollections = await promptForCollections(insomniaExport, workspaceResource._id);
-  console.log(requestedCollections);
   const requestedEnvironments = await promptForEnvironments(insomniaExport, workspaceResource._id);
-  console.log(requestedEnvironments);
+
+  if (requestedEnvironments.length) {
+    await removeSecretValues(requestedEnvironments);
+  }
+
+  let extractedExport = structuredClone(insomniaExport);
+  extractedExport.resources = [
+    workspaceResource,
+    ...requestedCollections,
+    ...requestedEnvironments,
+  ];
+
+  if (!requestedEnvironments.some((env) => env.name === 'Base Environment')) {
+    extractedExport = replaceVariablePlaceholders(
+      JSON.stringify(extractedExport),
+    ) as InsomniaExport;
+  }
+
+  const datetimeString = formatDate(new Date());
+  const defaultFilename = `extracted_insomnia_export_${datetimeString}.json`;
+
+  let filename = '';
+  let validFilename = false;
+
+  while (!validFilename) {
+    filename = await input({
+      message: 'Optional custom filename?',
+      default: defaultFilename,
+    });
+
+    filename = filename.trim();
+
+    if (filename === '') {
+      filename = defaultFilename;
+    } else if (!filename.endsWith('.json')) {
+      filename = `${filename}.json`;
+    }
+
+    if (fs.existsSync(filename)) {
+      console.warn(`File already exists: "${path.resolve(filename)}"`);
+      continue;
+    }
+
+    validFilename = true;
+  }
+
+  console.log(`Outputting to: ${filename}`);
+  fs.writeFileSync(filename, JSON.stringify(extractedExport, null, 2));
+
+  console.log('');
+  console.log('Complete!');
 };
