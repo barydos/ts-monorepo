@@ -14,6 +14,8 @@ describe('extractResources', () => {
   let resources: InsomniaResource[];
 
   beforeEach(() => {
+    jest.resetAllMocks();
+
     resourceNames = createArray(faker.number.int({ min: 1, max: 5 }), () => faker.lorem.word());
     resources = resourceNames.map((name) => createMockInsomniaResource({ name }));
 
@@ -22,14 +24,18 @@ describe('extractResources', () => {
 
   it('should return an empty array if input resources is empty', () => {
     resources.length = 0;
+
     const result = extractResources(resources, resourceNames);
     expect(result).toStrictEqual([]);
+    expect(getSubResources).not.toHaveBeenCalled();
   });
 
   it('should return an empty array if resource names is empty', () => {
     resourceNames.length = 0;
+
     const result = extractResources(resources, resourceNames);
     expect(result).toStrictEqual([]);
+    expect(getSubResources).not.toHaveBeenCalled();
   });
 
   it('should throw an error if root resource cannot be found', () => {

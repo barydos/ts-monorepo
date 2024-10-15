@@ -53,14 +53,14 @@ export const createMockEnvironmentResources = (
   workspaceId = workspaceId ?? faker.string.uuid();
 
   const baseEnvironment = createMockBaseEnvironment({ parentId: workspaceId });
-  return [baseEnvironment];
-  // return [
-  //   ...createArray(faker.number.int({ min: 1, max: 5 }), createMockEnvironment, {
-  //     parentId: baseEnvironment._id,
-  //   }),
-  //   baseEnvironment,
-  // ];
+  return [
+    baseEnvironment,
+    ...createArray(faker.number.int({ min: 1, max: 5 }), createMockEnvironment, {
+      parentId: baseEnvironment._id,
+    }),
+  ];
 };
+
 export const createMockInsomniaExport = (
   workspaceId?: string,
   partial: Partial<InsomniaExport> = {},

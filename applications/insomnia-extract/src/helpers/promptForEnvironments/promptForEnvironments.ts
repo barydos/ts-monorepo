@@ -5,6 +5,7 @@ import {
   InsomniaExport,
   InsomniaResourceType,
 } from '../../types/insomnia.types';
+import { sanitiseCheckboxOption } from '../sanitiseCheckboxOption/sanitiseCheckboxOption';
 
 /**
  * Prompt user to extract the desired collections and environments from the workspace.
@@ -33,7 +34,7 @@ export const promptForEnvironments = async (
     const { name } = resource;
     return {
       name: name,
-      value: name,
+      value: sanitiseCheckboxOption(name),
     };
   });
 
