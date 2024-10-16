@@ -1,0 +1,39 @@
+{
+  "name": "@barydos/insomnia-extract",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "bin": {
+    "insomnia-extract-ts": "./src/index.ts",
+    "insomnia-extract": "./dist/index.cjs.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/build.js",
+    "clean": "npm run clean:coverage && npm run clean:dist && npm run clean:node_modules && npm run clean:tsbuildinfo",
+    "clean:coverage": "rm -rf coverage",
+    "clean:dist": "rm -rf dist",
+    "clean:node_modules": "rm -rf node_modules",
+    "clean:tsbuildinfo": "rm -f tsconfig.tsbuildinfo",
+    "dev": "tsx src/index.ts",
+    "test": "jest --logHeapUsage",
+    "test:silent": "npm run test -- --silent",
+    "test:unit": "./scripts/unit-test.sh",
+    "test:unit:silent": "npm run test:unit --silent"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@barydos/shared-libs": "^1.0.0",
+    "@inquirer/prompts": "^7.0.0"
+  }
+}
