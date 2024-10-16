@@ -1,6 +1,7 @@
 import { createArray } from '@barydos/shared-libs';
 import { faker } from '@faker-js/faker/locale/en';
 
+import { INSOMNIA_STRINGS } from '../constants';
 import {
   InsomniaEnvironmentResource,
   InsomniaExport,
@@ -26,7 +27,7 @@ export const createMockBaseEnvironment = (
   return {
     ...createMockEnvironment({
       _type: InsomniaResourceType.environment,
-      name: 'Base Environment',
+      name: INSOMNIA_STRINGS.baseEnvironment,
     }),
     ...partial,
   };
@@ -81,7 +82,7 @@ export const createMockInsomniaExport = (
     __export_format: 4,
     __export_date: new Date().toUTCString(),
     __export_source: 'insomnia.desktop.app:v2021.5.0',
-    resources: [...resources, mockInsomniaWorkspace],
+    resources: [mockInsomniaWorkspace, ...resources],
     ...partial,
   };
 };

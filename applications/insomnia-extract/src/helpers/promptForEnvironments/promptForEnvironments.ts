@@ -1,5 +1,6 @@
 import { checkbox } from '@inquirer/prompts';
 
+import { ERRORS } from '../../constants';
 import {
   InsomniaEnvironmentResource,
   InsomniaExport,
@@ -20,7 +21,7 @@ export const promptForEnvironments = async (
   }) as InsomniaEnvironmentResource | undefined;
 
   if (!baseEnvironmentResource) {
-    throw new Error('Missing base environment');
+    throw new Error(ERRORS.MISSING_BASE_ENVIRONMENT);
   }
 
   const subEnvironments = insomniaExport.resources.filter((resource) => {

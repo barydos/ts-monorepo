@@ -1,14 +1,17 @@
-import { input } from '@inquirer/prompts';
 import fs from 'fs';
 import path from 'path';
 
-import { getWorkspace } from '../helpers';
-import { promptForCollections } from '../helpers/promptForCollections/promptForCollections';
-import { promptForEnvironments } from '../helpers/promptForEnvironments/promptForEnvironments';
-import { removeSecretValues } from '../helpers/removeSecretValues/removeSecretValues';
-import { replaceVariablePlaceholders } from '../helpers/replaceVariablePlaceholders/replaceVariablePlaceholders';
+import { ERRORS, INSOMNIA_STRINGS } from '../constants';
+import {
+  getWorkspace,
+  promptForCollections,
+  promptForEnvironments,
+  promptForFilename,
+  removeSecretValues,
+  replaceVariablePlaceholders,
+} from '../helpers';
 import { InsomniaExport } from '../types';
-import { formatDate, readExport } from '../utils';
+import { readExport } from '../utils';
 
 /**
  * The program to extract the desired subset of the exported Insomnia resources.
@@ -25,12 +28,12 @@ export const app = async () => {
     insomniaExport = readExport(jsonFilePath) as InsomniaExport;
   } catch (err) {
     console.error(err);
-    throw new Error('Could not read Insomnia export file');
+    throw new Error(ERRORS.EXPORT_READ_FAILURE);
   }
 
   const workspaceResource = getWorkspace(insomniaExport);
   if (!workspaceResource) {
-    throw new Error('Missing workspace resource');
+    throw new Error(ERRORS.MISSING_WORKSPACE);
   }
 
   const requestedCollections = await promptForCollections(insomniaExport, workspaceResource._id);
@@ -47,39 +50,15 @@ export const app = async () => {
     ...requestedEnvironments,
   ];
 
-  if (!requestedEnvironments.some((env) => env.name === 'Base Environment')) {
-    extractedExport = replaceVariablePlaceholders(
-      JSON.stringify(extractedExport),
-    ) as InsomniaExport;
+  if (requestedEnvironments.length) {
+    if (requestedEnvironments.every((env) => env.name !== INSOMNIA_STRINGS.baseEnvironment)) {
+      extractedExport = replaceVariablePlaceholders(
+        JSON.stringify(extractedExport),
+      ) as InsomniaExport;
+    }
   }
 
-  const datetimeString = formatDate(new Date());
-  const defaultFilename = `extracted_insomnia_export_${datetimeString}.json`;
-
-  let filename = '';
-  let validFilename = false;
-
-  while (!validFilename) {
-    filename = await input({
-      message: 'Optional custom filename?',
-      default: defaultFilename,
-    });
-
-    filename = filename.trim();
-
-    if (filename === '') {
-      filename = defaultFilename;
-    } else if (!filename.endsWith('.json')) {
-      filename = `${filename}.json`;
-    }
-
-    if (fs.existsSync(filename)) {
-      console.warn(`File already exists: "${path.resolve(filename)}"`);
-      continue;
-    }
-
-    validFilename = true;
-  }
+  const filename = await promptForFilename();
 
   console.log(`Outputting to: ${filename}`);
   fs.writeFileSync(filename, JSON.stringify(extractedExport, null, 2));
