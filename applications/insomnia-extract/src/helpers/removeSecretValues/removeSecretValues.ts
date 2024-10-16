@@ -1,5 +1,6 @@
 import { checkbox } from '@inquirer/prompts';
 
+import { ERRORS } from '../../constants';
 import { InsomniaEnvironmentResource } from '../../types/insomnia.types';
 import { sanitiseCheckboxOption } from '../sanitiseCheckboxOption/sanitiseCheckboxOption';
 
@@ -41,7 +42,7 @@ export const removeSecretValues = async (
     const environmentVariables = Object.keys(data);
 
     if (!environmentVariables.length) {
-      console.log(`There are on variables in the environment: "${name}"`);
+      console.log(`${ERRORS.NO_ENVIRONMENT_VARIABLES}: "${name}"`);
       console.log('');
       continue;
     }

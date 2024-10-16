@@ -35,19 +35,9 @@ describe('promptForEnvironments', () => {
     expect(checkbox).not.toHaveBeenCalled();
   });
 
-  it('should return all the environments along with the base environment', async () => {
-    const nonBaseEnvironmentsOptions = environmentResources
-      .slice(1)
-      .map((resource) => resource.name);
-    (checkbox as jest.Mock).mockResolvedValueOnce(nonBaseEnvironmentsOptions);
-
-    const result = await promptForEnvironments(insomniaExport, workspaceId);
-    expect(checkbox).toHaveBeenCalled();
-    expect(result).toStrictEqual(environmentResources);
-  });
-
-  it('should return only the selected environments along with the base environment', async () => {
+  it('should return only the selected environments', async () => {
     (checkbox as jest.Mock).mockResolvedValueOnce([
+      'BaseEnvironment',
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       environmentResources[environmentResources.length - 1]!.name,
     ]);

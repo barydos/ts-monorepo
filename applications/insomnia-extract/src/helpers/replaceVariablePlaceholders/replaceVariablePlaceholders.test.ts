@@ -13,12 +13,12 @@ describe('replaceVariablePlaceholders', () => {
 
   it('should replace "_." from the JSON string', () => {
     const result = replaceVariablePlaceholders(JSON.stringify(json));
-    expect(result).toBe(JSON.stringify({ KEY: `{{ ${varName} }}` }));
+    expect(result).toStrictEqual({ KEY: `{{ ${varName} }}` });
   });
 
   it('should return the JSON string as is', () => {
-    expect(replaceVariablePlaceholders(JSON.stringify({ KEY: varName }))).toEqual(
-      JSON.stringify({ KEY: varName }),
-    );
+    expect(replaceVariablePlaceholders(JSON.stringify({ KEY: varName }))).toStrictEqual({
+      KEY: varName,
+    });
   });
 });

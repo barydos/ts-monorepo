@@ -44,10 +44,9 @@ export const promptForEnvironments = async (
     loop: false,
   });
 
-  const requestedSubEnvironments = subEnvironments.filter((resource) =>
-    requestedResources.includes(sanitiseCheckboxOption(resource.name)),
+  const requestedSubEnvironments = [baseEnvironmentResource, ...subEnvironments].filter(
+    (resource) => requestedResources.includes(sanitiseCheckboxOption(resource.name)),
   );
 
-  // return [baseEnvironmentResource, ...requestedSubEnvironments];
   return requestedSubEnvironments;
 };
