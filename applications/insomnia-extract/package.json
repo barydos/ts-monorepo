@@ -9,6 +9,10 @@
   "files": [
     "dist/*"
   ],
+  "bin": {
+    "insomnia-extract-ts": "./src/index.ts",
+    "insomnia-extract": "./dist/index.cjs.js"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json && node scripts/build.js",
     "clean": "npm run clean:coverage && npm run clean:dist && npm run clean:node_modules && npm run clean:tsbuildinfo",
@@ -25,6 +29,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  },
   "dependencies": {
     "@barydos/shared-libs": "^1.0.0",
     "@inquirer/prompts": "^7.0.0"
